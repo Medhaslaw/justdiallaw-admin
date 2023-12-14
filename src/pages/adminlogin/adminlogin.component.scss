@@ -1,0 +1,126 @@
+
+.admin_login{
+    
+    height: 80vh;
+    .mt_card{
+        padding: 0;
+        margin: 0;
+        // box-shadow: -0.2vw 0.1vw 0.1vw -0.2vw rgb(0 0 0 / 20%), 0.1vw 0.1vw 0.1vw 0px rgb(0 0 0 / 14%), 0.1vw 0.1vw 0.1vw 0px rgb(0 0 0 / 12%);
+        box-shadow: none;
+        border: 0.1vw solid #ccc;
+        border-radius: 0.5vw;
+ .add_invoice_form{
+    padding: 1vw 2vw;
+    background: #21387014;
+   
+    .com-logo{
+        text-align: center;
+        img{
+            width: 5vw;
+            
+        }
+    }
+
+    .mat_label{
+        color: #707074;
+        font-size: 0.95vw;
+        padding: 0;
+        margin: 0 0 0.5vw;  
+        font-weight: 500;  
+        span{
+            color: red;
+        }
+       
+    }
+    .mat_label_1{
+        color: #707074;
+        font-size: 0.95vw;
+        padding: 0;
+        margin: 0 0 0vw;  
+        font-weight: 500;  
+        display: block;
+    span{
+        color: red;
+    }
+    }
+    .radio_mat_btn{
+        margin-bottom: 0.5vw;
+        .mat_radio{
+            .radio_btn{
+                width: 6vw;
+                margin: 0.8vw 0;
+                font-size: 0.95vw;
+                color: #222;
+            }
+        }
+    }
+    .form_alert{
+        margin-top: 2vw;
+        .mat_form_filed{
+            width: 100% !important;
+            margin-bottom: 0vw;
+            .mat_input{
+                border: 0.1vw solid #e3e3e3;
+                padding: 0.8vw;
+                font-size: 0.9VW;
+                border-radius: 0.2VW;
+                background-color: #f9f9f9;
+                width: 94%;
+            }
+            .mat_input1{
+                width: 25.8vw;
+            }
+            .time_picker{
+                position: absolute;
+                right: 1vw;
+                top: 0.7vw;
+            }
+            .psw-icon{
+                position: absolute;
+                top: 1.5vw;
+                right: 0.5vw;
+                border: inherit;
+                background-color: inherit;
+                font-size: 1.2vw;
+                // mat-icon{
+                   
+                // }
+            }
+        }
+        .alert-danger{
+            background-color: inherit;
+            color: red;
+            border: inherit;
+            padding: 0.3vw 0;
+            margin: 0;
+            font-size: 0.8vw;
+            position: absolute;
+        }
+    }
+   
+    
+}
+.but{
+    width: fit-content;
+    margin: 1vw auto 0;
+    .sub_bt{
+        font-size: 1.1vw;
+        font-weight: 500;
+        color: #fff;
+        padding: 0.8vw;
+        background-color: #213870;
+        border: inherit;
+        margin: 1.4vw 0;
+        text-transform: uppercase;
+        width: 15vw;
+        border-radius: 5vw;
+    }
+}
+
+
+
+   
+}
+}
+
+

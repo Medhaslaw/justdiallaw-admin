@@ -1,0 +1,164 @@
+<div class="lawyer_profile">
+
+    <div class="row m-0">
+        <div class="col-md-5">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Lawyers</a></li>
+                        <li class="breadcrumb-item" [routerLink]="'/admindashboard/viewlawyers'"><a>Lawyers View</a></li>
+                        <li class="breadcrumb-item active"><a>Lawyer Details</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Lawyer Details</h1>
+            </div>
+        </div>
+        
+    </div>
+
+    <mat-card class="mat-card" *ngIf="lawyersDetails">
+        <div class="profile_details" >
+            <div class="row m-0">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-start">
+                        <div class="profile_img me-4" *ngIf="!lawyersDetails.profile_pic_url">
+                            <img src="../../../../assets/img/default-lawyer.png" alt="">
+                        </div>
+                            <div class="profile_img me-4" *ngIf="lawyersDetails.profile_pic_url">
+                                <img src="{{lawyersDetails.profile_pic_url}}" alt="">
+                            </div>
+                        <div>
+                            <h1>{{lawyersDetails?.first_name}} {{lawyersDetails?.last_name}}</h1>
+                            <h4 class="mb-2">{{lawyersDetails.email}}</h4>
+                            <h4>{{lawyersDetails.phone_no}}</h4>
+                        </div>
+                     
+                    </div>
+                   
+                </div>
+
+                </div>
+
+
+                <div class="row mt-4">
+                <hr>
+
+                    <div class="col-md-12">
+                        <h4>Basic Details</h4>
+                    </div>
+                <div class="col-md-12">
+                 
+                    <div class="d-flex justify-content-between">
+                        <div class="user_details">
+                            <h5>Gender</h5>
+                            <p >{{lawyersDetails.gender}}</p>
+                            <p *ngIf="!lawyersDetails.gender"> 
+                                ----
+                            </p>
+                         </div>
+                       
+                         <div class="user_details">
+                            <h5>Address</h5>
+                            <p>{{lawyersDetails.office_address}}</p>
+                         </div>
+                         <div class="user_details">
+                            <h5>Created on</h5>
+                            <p>{{lawyersDetails.created_on |  date: 'dd MMM, yyyy'}}</p>
+                        </div>
+                        <div class="user_details">
+                            <h5>Category</h5>
+                            <p>{{lawyersDetails?.primary_category.category_name}}, {{lawyersDetails.addon_category[0]?.category_name}}</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <hr>
+
+                <div class="col-md-12">
+                    <h4>Bar Council Info</h4>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between">
+                        <div class="user_details">
+                            <h5>Bar Council Enrollment Number</h5>
+                            <p>{{lawyersDetails?.barcouncil_id}}</p>
+                         </div>
+                         <div class="user_details">
+                             <h5>Name Of Bar Association</h5>
+                             <p>{{lawyersDetails.barcouncil_details[0].name_of_bar_association}}</p>
+                          </div>
+                          <div class="user_details">
+                             <h5>Bar Council Certificate or Id Card</h5>
+                             <button mat-button class="viewbtn" (click)="openDialog(lawyersDetails.id)">View</button>
+                          </div>
+                         
+                         <div class="user_details">
+                             <h5>Years of Experience</h5>
+                             <p>{{lawyersDetails.year_of_practice}} Years of experience</p>
+                         </div>
+                         <div class="user_details">
+                             <h5>Languages Known </h5>
+                             <p >{{lawyersDetails.languages}}</p>
+                         </div>
+                    </div>
+                 
+                    
+                    
+                </div>
+
+                <hr>
+
+                <div class="col-md-12">
+                    <h4>Summary</h4>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between">
+                        <div class="user_details">
+                            <h5>Professional Summary</h5>
+                            <div *ngIf="lawyersDetails.profile_lawyer_details[0].few_lines_about_you; else nosummary">
+                                <p [innerHTML]="lawyersDetails.profile_lawyer_details[0].few_lines_about_you | safeHtml"></p>
+                            </div>
+
+                            <ng-template #nosummary>
+                                <p>-</p>
+                            </ng-template>
+                        
+                        </div>
+                        <div class="user_details">
+                            <h5>Chamber Address</h5>
+                            <p>{{lawyersDetails.office_address}},{{lawyersDetails.city_name}},{{lawyersDetails.state}}</p>
+                        </div>
+                       
+                     
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="user_details">
+                            <h5>Facebook Id</h5>
+                            <p>{{lawyersDetails.profile_lawyer_details[0].facebook ? lawyersDetails.profile_lawyer_details[0].facebook : '-'}}</p>
+                        </div>
+                        <div class="user_details">
+                            <h5>Twitter Id</h5>
+                            <p>{{lawyersDetails.profile_lawyer_details[0].twitter ? lawyersDetails.profile_lawyer_details[0].twitter : '-'}}</p>
+                        </div>
+                        <div class="user_details">
+                            <h5>Profile Status</h5>
+                            <p *ngIf="!lawyersDetails.comment && lawyersDetails.added_by === null">{{lawyersDetails.approved_by_admin ? 'Approved' : 'Waiting for Approval'}}</p>
+                            <p *ngIf="lawyersDetails.comment">Rejected</p>
+                            <p *ngIf="lawyersDetails.added_by === 'Admin'"> Pending From Lawyer Side</p>
+                        </div>
+                    </div>
+                    <div class="user_details" *ngIf="lawyersDetails.comment">
+                        <h5>Reason for Rejection</h5>
+                        <p>{{lawyersDetails.comment}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </mat-card>
+</div>

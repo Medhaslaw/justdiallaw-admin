@@ -1,0 +1,81 @@
+<div class="lawyers_invoice Add_Invoice">
+    <div class="row m-0">
+        <div class="col-md-10">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Home</a></li>
+                        <li class="breadcrumb-item active"><a>Enquries</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>  Get In Touch</h1>
+            </div>
+        </div>
+        <div class="col-md-2 mat_card_invoice">
+            <form  class="add_invoice_form">
+                <div class="row">
+                    <div class="col-md-12 ">
+
+                        <div class="form_alert">
+                            <mat-form-field class="mat_form_filed">
+                                <!-- <mat-label>Select Type</mat-label> -->
+                                <label class="mat_label">Select Type <span></span></label> 
+                                <mat-select class="mat_input"  (selectionChange)="applySelectFilter($event)" >
+
+                                    <mat-option *ngFor="let types of enquriesType" [value]="types.type_contact_or_enquiry">
+                                      {{types.type_contact_or_enquiry}}
+                                    </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row m-0">
+            
+        <div class="col-md-12">
+            <table mat-table [dataSource]="dataSource" class="table_width">
+
+                <ng-container matColumnDef="username">
+                  <th mat-header-cell *matHeaderCellDef>User Name</th>
+                  <td mat-cell *matCellDef="let element">{{element.first_name}}</td>
+                </ng-container>
+              
+              
+                <ng-container matColumnDef="phone_no">
+                  <th mat-header-cell *matHeaderCellDef> Mobile Number</th>
+                  <td mat-cell *matCellDef="let element"> {{element.phone_no}} </td>
+                </ng-container>
+              
+                
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef>Email Id  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.email}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="massage">
+                    <th mat-header-cell *matHeaderCellDef> Message </th>
+                    <td mat-cell *matCellDef="let element">{{element.message}} </td>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type</th>
+                    <td mat-cell *matCellDef="let element">{{element.type_contact_or_enquiry}} </td>
+                </ng-container>
+           
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header_bg"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [length]="enquriesList.length" [pageSize]="7" [pageSizeOptions]="[8, 10, 25, 100]" aria-label="Select page of GitHub search results"></mat-paginator>
+            
+             
+        </div>
+    </div>
+   
+</div>

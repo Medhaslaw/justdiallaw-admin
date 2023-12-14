@@ -1,0 +1,61 @@
+<div class="add-faqs">
+    <div class="row m-0">
+        <div class="col-md-12">
+            <div class="mat_card_invoice">
+                <div class="heading">
+                   <h1> Add FAQ's</h1>
+                </div>
+                <button class="btn_close" mat-button mat-dialog-close><i class="bi bi-x-circle-fill"></i></button>
+                <form class="add_invoice_form" [formGroup]="addFaqsForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form_alert">
+                                <label class="mat_label">Question<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="question">
+                                </mat-form-field>
+                                <div *ngIf="addFaqsForm.controls['question'].invalid && (addFaqsForm.controls['question'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addFaqsForm.controls['question'].errors">
+                                        Question Required
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form_alert">
+                                <label class="mat_label">Answer<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <textarea matInput type="text" class="mat_input" formControlName="answer"></textarea>
+                                </mat-form-field>
+                                <div *ngIf="addFaqsForm.controls['answer'].invalid && (addFaqsForm.controls['answer'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addFaqsForm.controls['answer'].errors">
+                                        Answer Required
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-flex justify-content-between">
+                                <button mat-button type="submit" class="sub_btn" (click)="save()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,311 @@
+<div class="Add_Invoice">
+    <div class="row m-0">
+        <div class="col-md-12">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Lawyers</a></li>
+                        <li class="breadcrumb-item isactive"><a>Add Lawyers</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Add Lawyers</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-md-12">
+            <mat-card class="mat_card_invoice">
+                    <form action="" class="add_invoice_form" *ngIf="hideRegFileds" [formGroup]="addLawyerForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">First Name<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed">
+                                <input matInput type="text" (keypress)="keyPressAlphaNumeric($event)" class="mat_input" formControlName="first_name">
+                            </mat-form-field>
+
+                            <div *ngIf="addLawyerForm.controls['first_name'].invalid && (addLawyerForm.controls['first_name'].touched)" class="alert alert-danger">
+                                <div *ngIf="addLawyerForm.controls['first_name'].errors">
+                                    First Name Required
+                                </div>
+                            </div>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Last Name<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed">
+                                <input matInput type="text" (keypress)="keyPressAlphaNumeric($event)" class="mat_input" formControlName="last_name">
+                            </mat-form-field>
+
+                            <div *ngIf="addLawyerForm.controls['last_name'].invalid && (addLawyerForm.controls['last_name'].touched)" class="alert alert-danger">
+                                <div *ngIf="addLawyerForm.controls['last_name'].errors">
+                                    Last Name Required
+                                </div>
+                            </div>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="radio_mat_btn">
+                                <label class="mat_label">Your Gender<span>*</span></label> 
+                                <mat-radio-group class="mat_radio" aria-label="Select an option"
+                                    formControlName="gender">
+                                    <mat-radio-button class="radio_btn" value="Male">Male</mat-radio-button>
+                                    <mat-radio-button class="radio_btn" value="Female">Female</mat-radio-button>
+                                    <mat-radio-button class="radio_btn" value="Others">Others</mat-radio-button>
+                                </mat-radio-group>
+                                <div *ngIf="addLawyerForm.controls['gender'].invalid && (addLawyerForm.controls['gender'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addLawyerForm.controls['gender'].errors">
+                                        Last Name Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+
+                                <label class="mat_label">Mobile Number<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed">
+                                <input matInput type="text" class="mat_input" formControlName="phone_no">
+                            </mat-form-field>
+
+                            <div *ngIf="addLawyerForm.controls['phone_no'].invalid && (addLawyerForm.controls['phone_no'].touched)" class="alert alert-danger">
+                                <div *ngIf="addLawyerForm.controls['phone_no'].errors">
+                                    Mobile Number Required
+                                </div>
+                            </div>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+
+                                <label class="mat_label">Email Id<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed">
+                                <input matInput type="text" class="mat_input" formControlName="email">
+                            </mat-form-field>
+
+                            <div *ngIf="addLawyerForm.controls['email'].invalid && (addLawyerForm.controls['email'].touched)" class="alert alert-danger">
+                                <div *ngIf="addLawyerForm.controls['email'].errors">
+                                    Email Id Required
+                                </div>
+                            </div>
+
+
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button mat-button type="submit" class="sub_btn" (click)="save()">Save</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- <button mat-button  class="cancel_btn" (click)="cancelBtn()">Cancel</button> -->
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+
+
+
+
+                   
+
+                    
+                    
+
+                </form>
+
+                <form action="" class="add_invoice_form" *ngIf="showTheUpdateFileds" [formGroup]="updateLawyerForm"  >
+                   
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                            <label class="mat_label">Primary Practice Area<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed">
+                                <mat-select  name="food" class="mat_input" formControlName="primary_category" >
+                                      <mat-option *ngFor="let category of allCategory "  [value]="category.id">{{category.category_name}}</mat-option>
+                                  </mat-select>
+                                
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                         
+                            <label class="mat_label">Other Practice Areas<span>*</span></label>
+                            <div class="court-div">
+                            <mat-chip-list aria-label="Fish selection" selectable multiple>
+                                <mat-chip *ngFor="let category of allCategory " 
+                                                           
+                                [ngClass]="{'active': selectedCategorys.includes(category.id)}"
+                                
+                                (click)="selectCategorys(category.id)">
+                                {{category.category_name}} 
+                              
+                            </mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                            <label class="mat_label">Address<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed" >
+                                <input type="text"
+                                class="mat_input"
+                                formControlName="office_address"
+                                matInput
+                                (keyup)="onAutocompleteSelected($event)" 
+                                [matAutocomplete]="auto">
+                         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                           <mat-option *ngFor="let option of autocompleteItems"  [value]="option.description" (click)="selectArea(option)">
+                            {{option.description}}
+                           </mat-option>
+                         </mat-autocomplete>
+                             
+                            </mat-form-field>
+                         
+
+                     
+
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                            <label class="mat_label">State<span>*</span></label>
+                            <mat-form-field class="mat_form_filed">
+                                <!-- <mat-select class="mat_input mat_input1" formControlName="state" (selectionChange)="getCities($event)">
+                                    <mat-option *ngFor="let state of stateList" [value]="state.name">{{state.name}}</mat-option>
+                                </mat-select> -->
+                                <input matInput type="text" class="mat_input"  formControlName="state">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                            <label class="mat_label">City<span>*</span></label>
+                            <mat-form-field class="mat_form_filed">
+                                <!-- <mat-select class="mat_input mat_input1"  formControlName="city_name" >
+                                    <mat-option *ngFor="let city of cityList" [value]="city.name">{{city.name}}</mat-option>
+                                </mat-select> -->
+                                <input matInput type="text" class="mat_input"  formControlName="city_name">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                 
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                           
+                            <label class="mat_label">Choose Courts<span>*</span></label>
+                            <div class="court-div">
+                            <mat-chip-list aria-label="Fish selection" selectable multiple>
+                                <mat-chip *ngFor="let court of courts "
+                                                               
+                                [ngClass]="{'active': selectedCourt.includes(court.text)}"
+                                (click)="select(court.text)"
+                               >
+                                {{court.text}}
+                            
+                            </mat-chip>
+
+                            </mat-chip-list>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                            <label class="mat_label">Years of Practicing Law<span>*</span></label>
+                            <mat-form-field class="mat_form_filed">
+                                <mat-select class="mat_input mat_input1" formControlName="year_of_practice" >
+                                    <mat-option *ngFor="let experience of experienceList"
+                                    [value]="experience">{{experience}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                  
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                            <label class="mat_label">Bar Council Enrollment Number<span>*</span></label> 
+                        <mat-form-field class="mat_form_filed">
+                            <input matInput type="text" class="mat_input"  formControlName="barcouncil_id">
+                        </mat-form-field>
+
+                      
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form_alert">
+                            <label class="mat_label">Choose Languages<span>*</span></label>
+                            <div class="court-div">
+                            <mat-chip-list aria-label="Fish selection" selectable multiple>
+                                <mat-chip *ngFor="let language of langugaes "
+                                                              
+                                [ngClass]="{'active': selectedLanguages.includes(language.name)}"
+                                (click)="selectlanguage(language.name)">
+                                {{language.name}}
+
+                            </mat-chip>
+
+    
+                            </mat-chip-list>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button mat-button type="submit" class="sub_btn" (click)="UpDataLawyer()">Save</button>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <button mat-button  class="cancel_btn" (click)="cancelBtn()" >Cancel</button> -->
+                            </div>
+                        </div>
+                    </div>                        
+                </div>
+                </form>
+                
+            </mat-card>
+        </div>
+    </div>
+
+</div>

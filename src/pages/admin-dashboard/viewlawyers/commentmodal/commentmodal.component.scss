@@ -1,0 +1,35 @@
+.sign_up{
+    padding: 1vw;
+    textarea{
+        width: 100%;
+        padding: 0.9vw;
+        border: 0.1vw solid #ccc;
+        &:focus-visible{
+            outline: none;
+        }
+    }
+    label{
+        font-size: 1vw;
+        color: #000;
+        padding: 0;
+        margin: 0 0 1vw;
+        font-weight: 500;
+    }
+    .sub_btn{
+        border: inherit;
+        color: #fff;
+        background-color: #213870;
+        font-size: 0.9vw;
+        font-weight: 400;
+        padding: 1vw;
+        width: 100%;
+        margin: 0.8vw 0 0;
+        border-radius: 10vw;
+    }
+}
+.cls-btn{
+text-align: end;
+i{
+    color: red;
+}
+}

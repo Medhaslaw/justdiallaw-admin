@@ -1,0 +1,19 @@
+.img{
+    padding: 1vw;
+    position: relative;
+    img{
+        width: 100%;
+    }
+    .closebtn{
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: inherit;
+        background-color: inherit;
+        z-index: 99;
+        i{
+            color: red;
+            font-size: 1.5vw;
+        }
+    }
+}

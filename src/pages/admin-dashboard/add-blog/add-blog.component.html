@@ -1,0 +1,244 @@
+<div class="Add_Invoice">
+    <div class="row m-0">
+        <div class="col-md-12">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Blogs</a></li>
+                        <li class="breadcrumb-item active"><a>Add Blogs</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Add Blogs</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-md-12">
+            <mat-card class="mat_card_invoice">
+                <form action="" class="add_invoice_form" [formGroup]="addBlogsForm" #myform="ngForm">
+                 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form_alert">
+                                <label class="mat_label">Content<span>*</span></label> 
+                                <div class="NgxEditor__Wrapper">
+                                    <!-- <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" > </ngx-editor-menu>
+                                    <ngx-editor
+                                      [editor]="editor"
+                                      [ngModel]="html"
+                                      formControlName="content"
+                                      [disabled]="false"
+                                      [placeholder]="'Type here...'"
+                                    ></ngx-editor> -->
+                                    
+                               <ckeditor [editor]="Editor" 
+                               formControlName="content"
+                               data="<p>Hello, world!</p>"></ckeditor>
+
+                                  </div>
+    
+                                <!-- <div *ngIf="addBlogsForm.controls['content'].invalid && (addBlogsForm.controls['content'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addBlogsForm.controls['content'].errors">
+                                     Blog  Content Required
+                                    </div>
+                                </div> -->
+                                <h6>
+                                    <span
+                                        *ngIf="addBlogsForm.controls['content'].hasError('required') && myform.submitted">Blog Content is Required</span>
+                                </h6>
+
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Title<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" [(ngModel)]="mymodel" (change)="valuechange($event)" formControlName="title">
+                                </mat-form-field>
+    
+                                <!-- <div *ngIf="addBlogsForm.controls['title'].invalid && (addBlogsForm.controls['title'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addBlogsForm.controls['title'].errors">
+                                        Title Required
+                                    </div>
+                                </div> -->
+                                <h6>
+                                    <span
+                                        *ngIf="addBlogsForm.controls['title'].hasError('required') && myform.submitted">Blog Title is Required</span>
+                                </h6>
+
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Meta Title<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="meta_title">
+                                </mat-form-field>
+    
+                                <!-- <div *ngIf="addBlogsForm.controls['meta_title'].invalid && (addBlogsForm.controls['meta_title'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addBlogsForm.controls['meta_title'].errors">
+                                      Meta  Title Required
+                                    </div>
+                                </div> -->
+                                <h6>
+                                    <span
+                                        *ngIf="addBlogsForm.controls['meta_title'].hasError('required') && myform.submitted">Meta Title is Required</span>
+                                </h6>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Meta Description<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="meta_discription">
+                                </mat-form-field>
+    
+                                <!-- <div *ngIf="addBlogsForm.controls['meta_discription'].invalid && (addBlogsForm.controls['meta_discription'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addBlogsForm.controls['meta_discription'].errors">
+                                        Meta Description Type Required
+                                    </div>
+                                </div> -->
+
+                                <h6>
+                                    <span
+                                        *ngIf="addBlogsForm.controls['meta_discription'].hasError('required') && myform.submitted">Meta Description is Required</span>
+                                </h6>
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <div class="upload-file">
+                                   
+                                    <div class="upload-img d-flex">
+                                        <button class="file-upload-button">
+                                            <input type="file" class="upload-file"
+                                                (change)="onFileChanged($event)" formControlName="blog_image" />
+                                                Browse Image
+                                        </button>
+                                        <p *ngIf="!fileName">Upload Image</p>
+                                        <p *ngIf="fileName">{{fileName}}</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Meta Keyword<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="meta_keyword">
+                                </mat-form-field>
+    
+                                <!-- <div *ngIf="addBlogsForm.controls['meta_keyword'].invalid && (addBlogsForm.controls['meta_keyword'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addBlogsForm.controls['meta_keyword'].errors">
+                                        Meta Keyword Required
+                                    </div>
+                                </div> -->
+                                <h6>
+                                    <span
+                                        *ngIf="addBlogsForm.controls['meta_keyword'].hasError('required') && myform.submitted">Meta Keyword is Required</span>
+                                </h6>
+
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Blog Url<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="blog_url">
+                                </mat-form-field>
+    
+                                <!-- <div *ngIf="addBlogsForm.controls['blog_url'].invalid && (addBlogsForm.controls['blog_url'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addBlogsForm.controls['blog_url'].errors">
+                                        Blog Url Required
+                                    </div>
+                                </div> -->
+                                <h6>
+                                    <span
+                                        *ngIf="addBlogsForm.controls['blog_url'].hasError('required') && myform.submitted">Blog Url is Required</span>
+                                </h6>
+                                
+
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Category<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <mat-select  name="food" class="mat_input" formControlName="category">
+                                        <mat-option *ngFor="let categoryData of categoryList" [value]="categoryData.id">
+                                          {{categoryData.category_name}}
+                                        </mat-option>
+                                      </mat-select>
+                                    <!-- <input matInput type="text" class="mat_input" formControlName="category"> -->
+                                </mat-form-field>
+    
+                                <!-- <div *ngIf="addBlogsForm.controls['category'].invalid && (addBlogsForm.controls['category'].touched)" class="alert alert-danger">
+                                    <div *ngIf="addBlogsForm.controls['category'].errors">
+                                     Blog  Content Required
+                                    </div>
+                                </div> -->
+
+                                <h6>
+                                    <span
+                                        *ngIf="addBlogsForm.controls['category'].hasError('required') && myform.submitted">Category is Required</span>
+                                </h6>
+
+                            </div>
+                           
+                        </div>
+
+                        <div class="col-md-4 mt-2">
+                            <div class="buttuns">
+                                <div class="d-flex justify-content-between">
+                                    <button mat-button  class="sub_btn me-3 " (click)="save()" >Save</button>
+                                    <!-- <button mat-button  class="cancel_btn" (click)="cancel()">Cancel</button> -->
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+
+
+                    <!-- <div class="row">
+                        <div class="col-md-4">
+                            <div class="buttuns">
+                                <div class="d-flex justify-content-between">
+                                    <button mat-button  class="sub_btn me-3 " (click)="save()" >Save</button>
+                                    <button mat-button  class="cancel_btn">Cancel</button>
+
+                                </div>
+                            </div>
+                           
+                        </div>                        
+                    </div> -->
+
+
+                </form>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

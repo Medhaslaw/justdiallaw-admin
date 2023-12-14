@@ -1,0 +1,81 @@
+<div class="Add_Invoice">
+    <div class="row m-0">
+        <div class="col-md-12">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Category</a></li>
+                        <li class="breadcrumb-item active"><a>Update Category</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Update Category</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-md-12">
+            <mat-card class="mat_card_invoice">
+                <form action="" class="add_invoice_form" [formGroup]="categoryForm" >
+                 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Category Type<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="category_name">
+                                </mat-form-field>
+    
+                                <div *ngIf="categoryForm.controls['category_pic'].invalid && (categoryForm.controls['category_pic'].touched)" class="alert alert-danger">
+                                    <div *ngIf="categoryForm.controls['category_pic'].errors">
+                                        Category Type Required
+                                    </div>
+                                </div>
+
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <div class="upload-file">
+                                   
+                                    <div class="upload-img d-flex">
+                                        <button class="file-upload-button">
+                                            <input type="file" class="upload-file"
+                                                (change)="onFileChanged($event)" formControlName="category_pic" />
+                                                Browse Image
+                                        </button>
+                                        <p *ngIf="!fileName">Upload Image</p>
+                                        <p *ngIf="fileName">{{fileName}}</p>
+                                    </div>
+                                    <p class="hint">Image Max-Width: 224px; Max-Height:224px </p>
+                                
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                   
+                    
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="buttuns">
+                                <div class="d-flex justify-content-between">
+                                    <button mat-button  class="sub_btn me-3 " (click)="save()" >Save</button>
+                                    <!-- <button mat-button  class="cancel_btn" (click)="cancel()">Cancel</button> -->
+
+                                </div>
+                            </div>
+                           
+                        </div>                        
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

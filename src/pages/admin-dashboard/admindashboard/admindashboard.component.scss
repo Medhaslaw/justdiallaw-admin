@@ -1,0 +1,149 @@
+
+    .example-container{
+       
+       
+        .side_nave-user{
+            // background-image: linear-gradient(to bottom, #061731, #101938, #1c1a3f, #291a44, #371947, #391848, #3c174a, #3e164b, #33174c, #27194d, #18194e, #001a4d);
+            top: 4.4vw;
+            height: 100vh;
+            width: 18vw;
+            background-color: #213870;
+            box-shadow: 0px -1px 8px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+            position: fixed;
+            padding: 0vw 0vw 0;
+            .side_menu{
+                overflow-y: scroll;
+                max-height: 90vh;
+
+
+                .user_details{
+                    text-align: center;
+                    .user-profile{
+                        img{
+                            width: 8.5vw;
+                            border: 0.25vw solid #2d457e;
+                            border-radius: 50vw;
+                        }
+
+                    }
+                    h3{
+                        color: #fff;
+                        font-size: 1.5vw;
+                        font-weight: 700;
+                        padding: 0;
+                        margin: 0.8vw 0 0;
+                    }
+                    h4{
+                        font-size: 1vw;
+                        color: #cccccc;
+                        padding: 0;
+                        margin: 0.4vw 0 0;
+                        font-weight: 500;
+                    }
+
+                }
+                hr{
+                    margin: 0.8vw auto  !important;
+                    border-top: 0.25vw solid #666 !important;
+                    width: 18vw !important;
+
+                }
+                .mat_accordation{
+
+                ul{
+                    padding: 0;
+                    margin: 0 0 0vw;
+                    .enq_tab{
+                        padding: 1vw 1vw;
+                        margin: 0.5vw 0.8vw;
+                        svg{
+                            width: 1.3vw;
+                            margin-right: 0.8vw;
+                        }
+                        &:hover{
+                            background-color: #213870;
+                            border-radius: 0.3vw;
+                        }
+                        i{
+                            width: 1.3vw;
+                            margin-right: 0.8vw;
+                        }
+                        &:hover{
+                            background-color: #213870;
+                            border-radius: 0.3vw;
+                        }
+
+                      
+                    }
+                    li{
+                        padding: 0vw ;
+                        margin: 0.3vw 0 0 1.5vw;;
+                        cursor: pointer;
+                        font-size: 1vw;
+                        color: #fff;
+                        font-weight: 500;
+                        list-style: none;
+                       
+                        
+                            .expansion-panel{
+                                background-color: inherit;
+                                box-shadow: inherit;
+                                color: #fff;
+                                .panel_header{  
+                                    padding: 1.6vw 1vw;
+                                    margin: 0.5vw 0.8vw;
+                                    // background-color: #e86d1f;
+                                    .panel_title{
+                                        color: #fff;
+                                        font-size: 1.1vw;
+                                      
+                                       
+                                    }
+                                    &:hover{
+                                        background-color: #213870;
+                                        border-radius: 0.3vw;
+                                    }
+
+                                }
+                               
+                                svg{
+                                    width: 1.3vw;
+                                    margin-right: 0.8vw;
+                                }
+                                i{
+                                    width: 1.3vw;
+                                    margin-right: 0.8vw;
+                                }
+                               
+                                
+                            }
+                            li{
+                                color: #fff;
+                                font-size: 0.9vw;
+                                font-weight: 500;
+                                padding: 0.8vw;
+                                margin: 0.3vw 0.8vw 0.3vw 1.3vw;
+                                &:hover{
+                                    background-color: #e86d1f;
+                                    border-radius: 0.3vw;
+                                }
+                            }
+                        
+                        
+
+                    }
+                }
+            }
+
+            }            
+
+            
+        }
+
+    }
+    .active{
+        // background-color: #213870;
+        background-color: rgb(27 45 88);
+        border-radius: 0.3vw;
+
+    }

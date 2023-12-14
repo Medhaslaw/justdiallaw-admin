@@ -1,0 +1,224 @@
+
+
+<div class="Add_Invoice">
+    <div class="row m-0">
+        <div class="col-md-12">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Services</a></li>
+                        <li class="breadcrumb-item"><a>Add Startups</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Add Startups</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-md-12">
+            <mat-card class="mat_card_invoice">
+                <form  class="add_invoice_form" [formGroup]="addDocumentsForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Startups Category<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <mat-select  (selectionChange)="getSubTitel($event)" name="food" class="mat_input" formControlName="startup_category">
+                                        <mat-option *ngFor="let document of documentList" [value]="document.document_name">
+                                          {{document.document_name}}
+                                        </mat-option>
+                                      </mat-select>
+                                </mat-form-field>
+    
+
+                                <div *ngIf="addDocumentsForm.controls['startup_category'].invalid && (addDocumentsForm.controls['startup_category'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['startup_category'].errors">
+                                        Startup  Category is Required
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Startup Sub Title<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <mat-select  name="food" class="mat_input" formControlName="startup_sub_category">
+                                        <mat-option *ngFor="let document of getSubTitelArry" [value]="document.sub_document_name">
+                                          {{document.sub_document_name}}
+                                        </mat-option>
+                                      </mat-select>
+                                </mat-form-field>
+                                <div *ngIf="addDocumentsForm.controls['startup_sub_category'].invalid && (addDocumentsForm.controls['startup_sub_category'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['startup_sub_category'].errors">
+                                        Startup Sub Category is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Title<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="title">
+                                </mat-form-field>
+                                <div *ngIf="addDocumentsForm.controls['title'].invalid && (addDocumentsForm.controls['title'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['title'].errors">
+                                        Title is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Description<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="description">
+                                </mat-form-field>
+                                <div *ngIf="addDocumentsForm.controls['description'].invalid && (addDocumentsForm.controls['description'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['description'].errors">
+                                        Description is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                      
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <div class="upload-file">
+                                    <div class="upload-img d-flex">
+                                        <button class="file-upload-button">
+                                            <input type="file" class="upload-file" (change)="onFileChanged($event)" />
+                                            Banner Image
+                                        </button>
+                                        <p *ngIf="!fileName">Upload Image</p>
+                                        <p *ngIf="fileName">{{fileName}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+       
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form_alert">
+                                <label class="mat_label">Content<span></span></label>
+                                <div class="NgxEditor__Wrapper">
+                                    <ngx-suneditor ></ngx-suneditor>
+                                </div>
+
+                              
+                              
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                  
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Actual Price<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="actual_price">
+                                </mat-form-field>
+                                <div *ngIf="addDocumentsForm.controls['actual_price'].invalid && (addDocumentsForm.controls['actual_price'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['actual_price'].errors">
+                                        Actual Price  is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Offer Price<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input"
+                                        formControlName="offer_price">
+                                </mat-form-field>
+                                <div *ngIf="addDocumentsForm.controls['offer_price'].invalid && (addDocumentsForm.controls['offer_price'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['offer_price'].errors">
+                                        offer Price is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">US Actual Price<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" formControlName="us_actual_price">
+                                </mat-form-field>
+                                <div *ngIf="addDocumentsForm.controls['us_actual_price'].invalid && (addDocumentsForm.controls['us_actual_price'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['us_actual_price'].errors">
+                                       US Actual Price is Required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">US Offer Price<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input"
+                                        formControlName="us_offer_price">
+                                </mat-form-field>
+                                <div *ngIf="addDocumentsForm.controls['us_offer_price'].invalid && (addDocumentsForm.controls['us_offer_price'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="addDocumentsForm.controls['us_offer_price'].errors">
+                                       US Offer Price is Required
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                      
+                    </div>
+
+
+                
+
+
+                    <div class="row">
+
+                        <div class="col-md-4 mt-2">
+                            <div class="buttuns">
+                                <div class="d-flex justify-content-between">
+                                    <button mat-button class="sub_btn me-3 " (click)="save()">Save</button>
+                                    <!-- <button mat-button class="cancel_btn">Cancel</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

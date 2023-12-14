@@ -1,0 +1,213 @@
+<div class="lawyers_invoice">
+    <div class="row m-0">
+        <div class="col-md-7">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Lawyers</a></li>
+                        <li class="breadcrumb-item active"><a>View Lawyers </a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>View Lawyers </h1>
+            </div>
+        </div>
+   
+            <div class="col-md-5 d-flex justify-content-end mat_card_invoice">
+                <form  class="add_invoice_form mr-1">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="form_alert">
+                                <mat-form-field class="mat_form_filed">
+                                    <label class="mat_label">Select Category</label> 
+                                    <mat-select  class="mat_input"  (selectionChange)="applyFilter($event)" >
+
+                                        <mat-option [value]="allLawyers">
+                                            All
+                                          </mat-option>
+
+                                        <mat-option *ngFor="let category of allCategory " [value]="category.category_name">
+                                    
+                                          {{category.category_name}}
+                                        </mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </form>
+            
+                <div class="btn-dow ">
+                    <button (click)="dowloadExcel()">
+                     Download excel sheet
+                    </button>
+                </div>
+            </div>
+     
+
+    </div>
+
+    <div class="row m-0">
+
+        <div class="col-md-12" *ngIf="lawyersList.length == 0">
+            <div class="no-data text-center">
+                <p>No Lawyers Found</p>
+            </div>
+        </div>
+            
+        <div class="col-md-12" *ngIf="lawyersList.length > 0">
+            <table mat-table [dataSource]="dataSource" class="table_width">
+
+                <ng-container matColumnDef="username">
+                  <th mat-header-cell *matHeaderCellDef>Lawyer Name</th>
+                  <td mat-cell *matCellDef="let element">{{element?.first_name}} {{element?.last_name}}</td>
+                </ng-container>
+              
+              
+                <ng-container matColumnDef="phone_no">
+                  <th mat-header-cell *matHeaderCellDef> Mobile Number</th>
+                  <td mat-cell *matCellDef="let element"> {{element?.phone_no}} </td>
+                </ng-container>
+              
+                
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef>Email Id  </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.email}}</td>
+                </ng-container>
+<!-- 
+                <ng-container matColumnDef="created_by">
+                    <th mat-header-cell *matHeaderCellDef> Created By </th>
+                    <td mat-cell *matCellDef="let element">{{element.created_by}} </td>
+                </ng-container> -->
+                <ng-container matColumnDef="primary_category">
+                    <th mat-header-cell *matHeaderCellDef> Primary Category </th>
+                    <td mat-cell *matCellDef="let element">
+
+                        {{element?.primary_category_id ? element?.primary_category_id[0]?.category_name : ''}} 
+                    </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status</th>
+                    <td mat-cell *matCellDef="let element">
+                        <ng-container *ngIf="!element.comment && element.added_by === null">
+                             {{element.approved_by_admin ? 'Approved' : 'Wating for Approval'}}
+                        </ng-container>
+                        <ng-container *ngIf="element.comment">
+                            Rejected
+                        </ng-container>
+
+                       <ng-container *ngIf="element.added_by === 'Admin' ">
+                            Pending From Lawyer Side
+                        </ng-container>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="active">
+                    <th mat-header-cell *matHeaderCellDef>Active Status </th>
+                    <td mat-cell *matCellDef="let element">
+                        <ng-container *ngIf="element.is_active" >
+                          Active
+                        </ng-container>
+                        <ng-container *ngIf="!element.is_active" >
+                          Block
+                          </ng-container>
+                        
+                     </td>
+                     
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <i class="bi bi-three-dots"></i>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <ng-container *ngIf="element.approved_by_admin === true">
+                            
+                            
+                        </ng-container>
+                        <ng-container *ngIf="element.approved_by_admin === false && element.added_by === null">
+                            <button mat-menu-item (click)="lawyerApprove(element)" >
+                                <mat-icon>how_to_reg</mat-icon>
+                                <span>Approve</span>
+                              </button>
+                        </ng-container>
+                        <ng-container *ngIf="element.comment === null  && !element.approved_by_admin">
+                            <!-- <button mat-menu-item (click)="lawyerApprove(element)" >
+                                <mat-icon>how_to_reg</mat-icon>
+                                <span>Approve</span>
+                              </button> -->
+                              <button mat-menu-item (click)="openDialog(element)">
+                                  <mat-icon>close</mat-icon>
+                                  <span>Reject</span>
+                              </button>
+                        </ng-container>
+                        
+                        <button mat-menu-item (click)="editLawyer(element)">
+                            <mat-icon>edit_square</mat-icon>
+                            <span>Edit</span>
+                          </button>
+
+                          <button mat-menu-item  (click)="lawyer_profile(element)"  >
+                              <mat-icon>visibility</mat-icon>
+                              <span>View</span>
+                            </button>
+
+                            <ng-container *ngIf="element.top_lawyer === false && element.approved_by_admin === true">
+                                <button mat-menu-item  (click)="top_lawyer(element)"  >
+                                    <mat-icon>gavel</mat-icon>
+                                      <span>Set Top Lawyer</span>
+                                    </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="element.approved_by_admin === true">
+                                <button mat-menu-item  (click)="Lawyer_Share(element)"  >
+                                    <mat-icon> attach_money</mat-icon>
+                                      <span> Add Lawyer Share</span>
+                                    </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="element.approved_by_admin === true && element.is_active ">
+                                <button mat-menu-item (click)="BlockUser(element)"  >
+                                    <mat-icon>block</mat-icon>
+                                    <span>Block User </span>
+                                  </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="element.approved_by_admin === true && !element.is_active ">
+                                <button mat-menu-item (click)="UnBlockUser(element)"  >
+                                    <mat-icon>check</mat-icon>
+                                    <span>Unblock User </span>
+                                  </button>
+                            </ng-container>
+
+
+                            <ng-container *ngIf="element.top_lawyer === true">
+                                <button mat-menu-item  (click)="remove_top_lawyer(element)"  >
+                                    <mat-icon>close</mat-icon>
+                                      <span>Remove Top Lawyer</span>
+                                    </button>
+                            </ng-container>
+
+            
+                        
+                        
+                      </mat-menu>
+                     </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header_bg"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"  ></tr>
+            </table>
+
+            <mat-paginator  [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of GitHub search results"></mat-paginator>
+            
+             
+        </div>
+    </div>
+   
+</div>

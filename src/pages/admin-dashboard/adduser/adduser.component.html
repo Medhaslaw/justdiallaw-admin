@@ -1,0 +1,126 @@
+<div class="Add_Invoice">
+    <div class="row m-0">
+        <div class="col-md-12">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Users</a></li>
+                        <li class="breadcrumb-item active"><a>Add User</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Add User</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-md-12">
+            <mat-card class="mat_card_invoice">
+                <form action="" class="add_invoice_form" [formGroup]="userAddForm">
+                 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">First Name<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed">
+                                <input matInput type="text" class="mat_input"  (keypress)="keyPressAlphaNumeric($event)" formControlName="first_name">
+                            </mat-form-field>
+                            <div *ngIf="userAddForm.controls['first_name'].invalid && (userAddForm.controls['first_name'].touched)" class="alert alert-danger">
+                                <div *ngIf="userAddForm.controls['first_name'].errors">
+                                    First Name Required
+                                </div>
+                            </div>
+                            
+
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                <label class="mat_label">Last Name<span>*</span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <input matInput type="text" class="mat_input" (keypress)="keyPressAlphaNumeric($event)" formControlName="last_name">
+                                </mat-form-field>
+                                <div *ngIf="userAddForm.controls['last_name'].invalid && (userAddForm.controls['last_name'].touched)" class="alert alert-danger">
+                                    <div *ngIf="userAddForm.controls['last_name'].errors">
+                                        Last Name Required
+                                    </div>
+                                </div>
+
+                            </div>
+                           
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form_alert">
+                                        <label class="mat_label">Mobile Number<span>*</span></label> 
+                                    <mat-form-field class="mat_form_filed">
+                                        <input matInput type="text" class="mat_input" formControlName="phone_no">
+                                    </mat-form-field>
+                                    <div *ngIf="userAddForm.controls['phone_no'].invalid && (userAddForm.controls['phone_no'].touched)" class="alert alert-danger">
+                                        <div *ngIf="userAddForm.controls['phone_no'].errors">
+                                            Mobile Number Required
+                                        </div>
+                                    </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+
+                                <label class="mat_label">Email Id<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed">
+                                <input matInput type="text" class="mat_input" formControlName="email">
+                            </mat-form-field>
+
+                            <div *ngIf="userAddForm.controls['email'].invalid && (userAddForm.controls['email'].touched)" class="alert alert-danger">
+                                <div *ngIf="userAddForm.controls['email'].errors">
+                                    Email Id Required
+                                </div>
+                            </div>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form_alert">
+
+                                <label class="mat_label">Password<span>*</span></label> 
+                            <mat-form-field class="mat_form_filed password-icon">
+                                <!-- <input matInput type="password" class="mat_input" formControlName="password"> -->
+                                <input matInput [type]="hide ? 'password' : 'text'" class="mat_input" formControlName="password" #pwd>
+                                <mat-icon class="psw-icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </mat-form-field>
+
+                            <div *ngIf="userAddForm.controls['password'].invalid && (userAddForm.controls['password'].touched)" class="alert alert-danger">
+                                <div *ngIf="userAddForm.controls['password'].errors">
+                                    Password is Required
+                                </div>
+                            </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-flex justify-content-between">
+                                    <button mat-button type="submit" class="sub_btn" (click)="save()">Save</button>
+                                    <!-- <button mat-button  class="cancel_btn" (click)="cancelBtn()">Cancel</button> -->
+                            </div>
+                        </div>                        
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

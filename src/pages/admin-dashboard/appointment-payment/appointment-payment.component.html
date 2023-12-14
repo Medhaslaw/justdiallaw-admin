@@ -1,0 +1,96 @@
+<div class="lawyers_invoice">
+    <div class="row m-0">
+        <div class="col-md-7">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Home</a></li>
+                        <li class="breadcrumb-item active"><a>Lawyer Payments</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Lawyer Payment</h1>
+            </div>
+        </div>
+   
+       
+     
+
+    </div>
+
+    <div class="row m-0">
+  
+        <div class="col-md-12" >
+            <table mat-table [dataSource]="dataSource" class="table_width">
+
+                <ng-container matColumnDef="lawyer_id">
+                  <th mat-header-cell *matHeaderCellDef>Lawyer Id</th>
+                  <td mat-cell *matCellDef="let element">{{element?.advocate_random_num }}</td>
+                </ng-container>
+              
+              
+                <ng-container matColumnDef="lawyername">
+                  <th mat-header-cell *matHeaderCellDef> Lawyer Name</th>
+                  <td mat-cell *matCellDef="let element"> {{element?.first_name}} {{element?.last_name}} </td>
+                </ng-container>
+              
+                
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef>Email  </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.email}}</td>
+                </ng-container>
+
+
+                  <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef> Phone </th>
+                    <td mat-cell *matCellDef="let element"> {{element?.phone_no}} </td>
+                  </ng-container>
+
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef> Category </th>
+                    <td mat-cell *matCellDef="let element">{{element?.primary_category_id[0]?.category_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element">{{element?.is_active}} </td>
+                </ng-container>
+
+            
+
+              
+             
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element">
+                    
+                        <button mat-button (click)="viewPayments(element.id)" >View Payments</button>
+
+                        <!-- <button class="review_btn" mat-icon-button [matMenuTriggerFor]="menu"
+                            aria-label="Example icon-button with a menu">
+                            <i class="bi bi-three-dots"></i>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="makePayment(element?.lawyer_id[0]?.id)" >
+                                <mat-icon>attach_money</mat-icon>
+                                <span>Make Payment</span>
+                              </button>
+                        </mat-menu> -->
+
+                    </td>
+                </ng-container>
+        
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header_bg"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"  ></tr>
+            </table>
+
+            <mat-paginator  [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of GitHub search results"></mat-paginator>
+            
+             
+        </div>
+    </div>
+   
+</div>
+

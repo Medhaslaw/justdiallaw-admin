@@ -1,0 +1,38 @@
+<div mat-dialog-content>
+    <div class="row justify-content-center">
+      <div class="col-md-11">
+        <div class="sign_up">
+          <form action="" class="add_invoice_form" [formGroup]="commentForm ">
+  
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cls-btn">
+                  <i class="bi bi-x-circle" (click)="closethePop()"></i>
+                </div>
+                <label>Enter Reason</label>
+
+                <textarea name="comment" id="" cols="30" rows="3" placeholder="Enter Message" formControlName="comment"></textarea>
+  
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row justify-content-center">
+                      <div class="col-md-8">
+                       
+                        <button mat-button class="sub_btn" (click)="save()">Submit</button>
+                      </div>
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+          </form>
+  
+        </div>
+      </div>
+    </div>
+    <!-- <div mat-dialog-actions>
+      <button mat-button mat-dialog-close class="cancle_btn"><i class="bi bi-x-circle-fill"></i></button>
+    </div> -->
+  </div>

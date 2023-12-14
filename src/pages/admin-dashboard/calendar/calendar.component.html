@@ -1,0 +1,95 @@
+<div class="lawyers_invoice">
+    <div class="row m-0">
+        <div class="col-md-10">
+            <!-- <div class="pagination-header">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Home</a></li>
+                        <li class="breadcrumb-item active"><a>Calendar</a></li>
+                    </ol>
+                </nav>
+            </div> -->
+            <div class="invoice_heading">
+                <h1>Calendar</h1>
+            </div>
+            <div class="col-md-2 d-flex mat_card_invoice">
+                <form  class="add_invoice_form">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="form_alert">
+                                <mat-form-field class="mat_form_filed">
+                                    <!-- <mat-label>Select Type</mat-label> -->
+                                    <label class="mat_label">Select Category <span></span></label> 
+                                    <mat-select class="mat_input"  (selectionChange)="selectCategory($event)" >
+                                        <mat-option *ngFor="let categoryData of categoryList " [value]="categoryData.id">
+                                          {{categoryData.category_name}}
+                                        </mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+                <!-- <div class="button-search">
+                 <button>
+                    search
+                 </button>
+                </div> -->
+
+                <form  class="add_invoice_form">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="form_alert">
+                                <label class="mat_label">Select Lawyer <span></span></label> 
+                                <mat-form-field class="mat_form_filed">
+                                    <!-- <mat-label>Select Type</mat-label> -->
+                                    <mat-select class="mat_input"  (selectionChange)="selectLawyer($event)" >
+                                        <mat-option *ngFor="let lawyer of lawyerData " [value]="lawyer.id">
+                                          {{lawyer.username.split('-')[0]}}
+                                        </mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+
+                <!-- <div class="btn-dow">
+                    <button (click)="removeEvents()">
+                        Clear
+                    </button>
+                </div> -->
+
+            </div>
+        </div>
+
+       
+
+        <div class="col-md-2">
+            <form action="" class="add_invoice_form add_invoice_form1">
+                <div class="row">
+                    <div class="col-md-8">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row m-0">   
+        <div class="col-md-12">
+            <div class="lawyerCalendar" >
+                <full-calendar [options]="calendarOptions"   [events]="eventsPromise | async">
+                    <ng-template #eventContent let-arg>
+                      <b>{{arg.timeText}}</b>
+                      <i>{{arg.event.title}}</i>
+                    </ng-template>
+                  </full-calendar>
+            </div>    
+        </div>
+    </div>
+   
+</div>
+

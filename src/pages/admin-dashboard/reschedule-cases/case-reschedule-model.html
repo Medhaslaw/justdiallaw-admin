@@ -1,0 +1,93 @@
+<div class="add_new_topic">
+    <div class="row m-0">
+        <div class="col-md-12 p-0">
+            <div mat-dialog-title class="dialog_title">
+                <h1>Reschedule Case</h1>
+                <button mat-button mat-dialog-close class="cancel_btn"><i class="bi bi-x-circle"></i></button>
+            </div>
+            <div mat-dialog-content class="dialog_content">
+                <form class="add_invoice_form" [formGroup]="rescheduleFrom"  #myform="ngForm" >
+                   
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+
+                                <label class="mat_label">Select Lawyer<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <mat-select name="food" class="mat_input mat_input" formControlName="advocate"
+                                        (selectionChange)="getSlots($event)">
+                                        <mat-option *ngFor="let lawyerData of lawyerList" [value]="lawyerData.id">
+                                            {{lawyerData.username.split('-')[0]}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <h6>
+                                        <span
+                                            *ngIf="rescheduleFrom.controls['advocate'].hasError('required') && myform.submitted">Select
+                                            the Lawyer
+                                        </span>
+                                    </h6>
+                                </mat-form-field>
+                              </div>
+                          
+
+                              <div class="mb-3">
+                                <mat-label class="mat_label">Choose a date<span>*</span></mat-label>
+                                <mat-form-field class="mat_form_filed">
+                                    <!-- <input matInput [matDatepicker]="picker"  (dateInput)="getDate($event)" formControlName="date" -->
+                                     <input matInput [matDatepicker]="picker" [min]="todayDate" (dateInput)="getDate($event)"  formControlName="date"
+                                         class="mat_input">
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                          
+                                <h6>
+                                    <span
+                                        *ngIf="rescheduleFrom.controls['date'].hasError('required') && myform.submitted">Choose
+                                        the Date
+                                    </span>
+                                </h6>
+
+                              </div>
+                              
+
+                              <div class="mb-3">
+
+                                <label class="mat_label">Select Time Slots<span>*</span></label>
+                                <mat-form-field class="mat_form_filed">
+                                    <mat-select name="food"  class="mat_input mat_input" formControlName="timeslot">
+                                        <mat-option *ngFor="let timeSlots of lawyerTimeSlots"  [value]="timeSlots.id">
+                                            {{timeSlots.Advocate_timing_slot}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <h6>
+                                    <span
+                                        *ngIf="rescheduleFrom.controls['timeslot'].hasError('required') && myform.submitted">Select
+                                        the Time Slot
+                                    </span>
+                                </h6>
+                                
+                              </div>
+
+                        
+                              
+                        </div>
+                      
+                    </div>
+                 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row  justify-content-center">
+                                <div class="col-md-7">
+                                    <button mat-button (click)="rescheduleCase()" class="sub_btn">Submit</button>
+                                  
+                                </div>
+                               
+                            </div>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

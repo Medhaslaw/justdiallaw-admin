@@ -1,0 +1,211 @@
+
+
+    <div class="lawyers_invoice">
+        <div class="row m-0">
+            <div class="col-md-9">
+                <!-- <div class="pagination-header">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a>Cases</a></li>
+                            <li class="breadcrumb-item active"><a>View Cases</a></li>
+                        </ol>
+                    </nav>
+                </div> -->
+                <div class="invoice_heading">
+                    <h1>View Cases</h1>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row m-0">
+                    <div class="col-md-12">
+                        <button mat-button class="add_inv_btn" [routerLink] = "'/admindashboard/add-leads'" >Add Leads</button>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <button mat-button class="filter_btn" ><i class="bi bi-funnel"></i> Filter Case</button>
+                    </div> -->
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="row m-0">
+            <div class="col-md-12">
+                
+    
+                <mat-card class="mat_card_invoice">
+                    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" (selectedTabChange)="onChange($event)" >
+                        <mat-tab label="All Leads">
+                            <div class="">
+                        
+                                <table mat-table [dataSource]="allCaseList" class="table_width">
+    
+                                    <!--- Note that these columns can be defined in any order.
+                                          The actual rendered columns are set as a property on the row definition" -->
+    
+                                          <ng-container matColumnDef="Case_Id">
+                                            <th mat-header-cell *matHeaderCellDef> Case ID</th>
+                                            <td mat-cell *matCellDef="let element"> {{element?.token_numbers}}</td>
+                                          </ng-container>
+                                  
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="client">
+                                      <th mat-header-cell *matHeaderCellDef> Client Name</th>
+                                      <td mat-cell *matCellDef="let element"> {{element?.client?.username.split('-')[0]}} </td>
+                                    </ng-container>
+                                  
+                                    <!-- Name Column -->
+                                  
+                                  
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="Lawyer">
+                                      <th mat-header-cell *matHeaderCellDef> Lawyer Name </th>
+                                      <td mat-cell *matCellDef="let element">{{element?.timeslot.created_by?.username.split('-')[0] }}  </td>
+                                    </ng-container>
+                                  
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="date">
+                                      <th mat-header-cell *matHeaderCellDef>Date </th>
+                                      <td mat-cell *matCellDef="let element">{{element.date}}</td>
+                                    </ng-container>
+    
+                                    <!-- <ng-container matColumnDef="action">
+                                      <th mat-header-cell *matHeaderCellDef> Action </th>
+                                      <td mat-cell *matCellDef="let element"> 
+                                      
+                                        <button mat-button >Details</button>
+                                        
+                                      </td>
+                                    </ng-container> -->
+                                  
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header_bg"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                  </table>
+    
+                                  <mat-paginator [length]="cassList.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="All Case">
+                            <div class="">
+                        
+                                <table mat-table [dataSource]="accAllCasesList" class="table_width">
+    
+                                    <!--- Note that these columns can be defined in any order.
+                                          The actual rendered columns are set as a property on the row definition" -->
+    
+                                          <ng-container matColumnDef="Case_Id">
+                                            <th mat-header-cell *matHeaderCellDef> Case ID</th>
+                                            <td mat-cell *matCellDef="let element">{{element?.token_numbers}} </td>
+                                          </ng-container>
+                                  
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="client">
+                                      <th mat-header-cell *matHeaderCellDef> Client Name</th>
+                                      <td mat-cell *matCellDef="let element">  {{element?.client?.username.split('-')[0]}} </td>
+                                    </ng-container>
+                                  
+                                    <!-- Name Column -->
+                                  
+                                  
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="Lawyer">
+                                      <th mat-header-cell *matHeaderCellDef> Lawyer Name </th>
+                                      <td mat-cell *matCellDef="let element">{{element?.timeslot.created_by?.username.split('-')[0] }}  </td>
+                                    </ng-container>
+                                  
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="date">
+                                      <th mat-header-cell *matHeaderCellDef>Date </th>
+                                      <td mat-cell *matCellDef="let element">{{element.date}} </td>
+                                    </ng-container>
+    
+                                    <ng-container matColumnDef="action">
+                                      <th mat-header-cell *matHeaderCellDef> Action </th>
+                                      <td mat-cell *matCellDef="let element"> 
+                                      
+                                        <button mat-button (click)="viewDetails(element)" >Details</button>
+                                        
+                                      </td>
+                                    </ng-container>
+                                  
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns1" class="header_bg"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                                  </table>
+    
+                                  <mat-paginator [length]="accCaseList.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    
+                            </div>
+                        </mat-tab>
+
+
+                        <mat-tab label="Close Case">
+                          <div class="">
+                            <table mat-table [dataSource]="closeAllcaseList" class="table_width">
+    
+                              <!--- Note that these columns can be defined in any order.
+                                    The actual rendered columns are set as a property on the row definition" -->
+
+                                    <ng-container matColumnDef="Case_Id">
+                                      <th mat-header-cell *matHeaderCellDef> Case ID</th>
+                                      <td mat-cell *matCellDef="let element"> {{element?.token_numbers}}</td>
+                                    </ng-container>
+                            
+                              <!-- Position Column -->
+                              <ng-container matColumnDef="client">
+                                <th mat-header-cell *matHeaderCellDef> Client Name</th>
+                                <td mat-cell *matCellDef="let element"> {{element?.client_id[0]?.username.split('-')[0]}} </td>
+                              </ng-container>
+                            
+                              <!-- Name Column -->
+                            
+                            
+                              <!-- Weight Column -->
+                              <ng-container matColumnDef="Lawyer">
+                                <th mat-header-cell *matHeaderCellDef> Lawyer Name </th>
+                                <td mat-cell *matCellDef="let element">{{element?.timeslot_id[0].created_by_id[0]?.username.split('-')[0] }}  </td>
+                              </ng-container>
+                            
+                              <!-- Symbol Column -->
+                              <ng-container matColumnDef="case_close_date">
+                                <th mat-header-cell *matHeaderCellDef>Close Of Date </th>
+                                <td mat-cell *matCellDef="let element">{{element?.case_close_date}}</td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="case_description">
+                                <th mat-header-cell *matHeaderCellDef>Case Summary </th>
+                                <td mat-cell *matCellDef="let element">{{element?.case_description}}</td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="case_status">
+                                <th mat-header-cell *matHeaderCellDef>Case Status </th>
+                                <td mat-cell *matCellDef="let element">{{element?.case_status}}</td>
+                              </ng-container>
+
+                              <!-- <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef> Action </th>
+                                <td mat-cell *matCellDef="let element"> 
+                                
+                                  <button mat-button >Details</button>
+                                  
+                                </td>
+                              </ng-container> -->
+                            
+                              <tr mat-header-row *matHeaderRowDef="displayedColumns2" class="header_bg"></tr>
+                              <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                            </table>
+
+                            <mat-paginator [length]="closeCaseList.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+
+                          </div>
+                        </mat-tab>
+
+                    </mat-tab-group>
+                    
+                </mat-card>
+            </div>
+        </div>
+    </div>
+   
+    

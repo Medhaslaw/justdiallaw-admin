@@ -1,0 +1,204 @@
+.lawyers_invoice{
+    padding: 3vw 2vw;
+    background-color: #f2f1f7;
+    min-height: 91.5vh;
+    .pagination-header {
+        nav {
+            .breadcrumb {
+                margin: 0 0 1vw;
+                font-family: 'Manrope';
+                font-weight: 500;
+
+                li {
+                    font-size: .75vw;
+                    color: #414146;
+                    font-weight: 500;
+                    padding-left: .3vw;
+
+                    a {
+                        color: #414146;
+                        font-size: .75vw;
+                        font-weight: 400;
+                    }
+                }
+
+                .breadcrumb-item+.breadcrumb-item::before {
+                    padding-right: .3vw;
+                    color: #666;
+                }
+            }
+
+
+        }
+       
+    }
+    .invoice_heading{
+        h1{
+            font-size: 1.4vw;
+            font-weight: 600;
+            padding: 0;
+            margin: 0 0 1vw;
+            color: #213870;
+            text-transform: uppercase;
+        }
+    }
+    // .mat_form_filed {
+    //     width: 100% !important;
+    //     margin: 0 0vw;
+    //     position: relative;
+
+    //     button {
+    //         position: absolute;
+    //         top: 0.9vw;
+    //         left: 1vw;
+    //         border: inherit;
+    //         color: #e86d1f;
+    //         font-size: 1.2vw;
+    //         background-color: inherit;
+    //     }
+
+    //     .mat_input {
+    //         border-bottom: 0.1vw solid #8d8c8c;
+    //         padding: 0.8vw 0.8vw 0.8vw 2vw;
+    //         font-size: 0.9VW;
+    //         border-radius: inherit;
+    //         background-color: #f9f9f9;
+    //     }
+
+    // }
+    .table_width{
+        width: 100%;
+        padding: 0.5vw;
+        .mat-row:nth-child(even){
+            background-color: #f5f8fd;
+        }
+                
+        // .mat-row:nth-child(odd){
+        //     background-color: black;
+        // }
+
+        th{
+            font-size: 1vw;
+            padding: 1vw;
+            margin: 0;
+            color: #fff;
+        }
+        .header_bg{
+            background-color: #213870;
+        }
+        td{
+            font-size: 0.9vw;
+            font-weight: 400;
+            color: #333437;
+            padding: 1vw;
+            margin: 0;
+            border: inherit;
+            span{
+                color: #e86d1f;
+                cursor: pointer;
+            }
+            button{
+                border: inherit;
+                padding: 0.5vw;
+                border-radius: 0.3vw;
+                background-color: inherit;
+                i{
+                    color: #213870;
+                    margin-left: 0.5vw;
+                    font-size: 1.3vw;
+                }
+            }
+            i{
+                font-size: 1.2vw;
+            }
+            .mat_menu{
+                padding: 0.5vw;
+                button{
+                    padding: 0.5vw;
+                    i{
+                        font-size: 1.1vw;
+                        margin-right: 0.8vw;
+                    }
+                    span{
+                        font-size: 0.9vw;
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+.mat_card_invoice {
+ 
+    .add_invoice_form {
+        .form_alert {
+            margin-bottom: 2vw;
+
+            .mat_label {
+                color: #707074;
+                font-size: 1.1vw;
+                padding: 0;
+                margin: 0 0 0.5vw;
+                font-weight: 500;
+
+                span {
+                    color: red;
+                }
+            }
+
+            .mat_form_filed {
+                width: 100% !important;
+                margin-bottom: 0.3vw;
+
+                .mat_input {
+                    border: 0.1vw solid #e3e3e3;
+                    padding: 1.1vw;
+                    font-size: 0.9VW;
+                    border-radius: 0.2VW;
+                    background-color: #f9f9f9;
+                    width: 10vw;
+                }
+
+                .mat_input1 {
+                    width: 33.5vw;
+                }
+
+              
+            }
+
+        }
+
+
+    }
+
+
+
+}
+
+.button-search{
+    button{
+        color: #fff;
+        border: none;
+        background: #e86d1f;
+        padding: 1vw;
+        margin-right: 0.8vw;
+        border-radius: 0.6vw;
+        text-transform: uppercase;
+    }
+}
+
+.btn-dow{
+    button{
+        color: #fff;
+        border: none;
+        background: #e86d1f;
+        padding: 1vw;
+        margin-right: 0.8vw;
+        border-radius: 0.6vw;
+        width: 8vw;
+        text-transform: uppercase;
+    }  
+}

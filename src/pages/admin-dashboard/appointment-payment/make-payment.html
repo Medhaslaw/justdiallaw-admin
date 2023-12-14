@@ -1,0 +1,106 @@
+<div class="add_new_topic">
+    <div class="row m-0">
+        <div class="col-md-12 p-0">
+            <div mat-dialog-title class="dialog_title">
+                <h1>Make Payment</h1>
+                <button mat-button mat-dialog-close class="cancel_btn"><i (click)="cloceDialog()" class="bi bi-x-circle"></i></button>
+            </div>
+            <div mat-dialog-content class="dialog_content">
+                <form class="add_invoice_form" [formGroup]="makePaymentFrom"  #myform="ngForm" >
+                   
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                              <div class="mb-3">
+                                <div class="form_alert">
+                                    <label class="mat_label">Amount <span>*</span></label>
+                                    <mat-form-field class="mat_form_filed">
+                                        <input matInput type="text" class="mat_input" formControlName="amount">
+                                    </mat-form-field>
+                                <h6>
+                                    <span *ngIf="makePaymentFrom.controls['amount'].hasError('required') && myform.submitted">Amount is required</span>
+                                  </h6>
+                                  </div>
+                              </div>
+
+                              <div class="mb-3">
+                                <div class="form_alert">
+                                    <label class="mat_label">Transaction Id <span>*</span></label>
+                                    <mat-form-field class="mat_form_filed">
+                                        <input matInput type="text" class="mat_input" formControlName="transaction_id">
+                                    </mat-form-field>
+                                <h6>
+                                    <span *ngIf="makePaymentFrom.controls['transaction_id'].hasError('required') && myform.submitted">Transaction Id is required</span>
+                                  </h6>
+                                  </div>
+                              </div>
+
+                              <div class="mb-3">
+                                <div class="form_alert">
+                                    <label class="mat_label">Select Payment Method<span>*</span></label>
+                                    <mat-form-field class="mat_form_filed">
+                                        <mat-select  class="mat_input mat_input1" formControlName="payment_method">
+                                            <mat-option  value="Cash">
+                                                Cash
+                                            </mat-option>
+                                            <mat-option  value="Credit and Debit Cards">
+                                                Credit and Debit Cards
+                                            </mat-option>
+                                            <mat-option  value="Online Bank Transfers">
+                                                Online Bank Transfers
+                                            </mat-option>
+                                            <mat-option  value="Digital Payment Platforms">
+                                                Digital Payment Platforms
+                                            </mat-option>
+                                            <mat-option  value="Bank Transfers">
+                                                Bank Transfers
+                                            </mat-option>
+                                            <mat-option  value="Checks">
+                                                Checks
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                <h6>
+                                    <span *ngIf="makePaymentFrom.controls['payment_method'].hasError('required') && myform.submitted">Payment Method is required</span>
+                                  </h6>
+                              </div>
+                              </div>
+                              <div class="mb-3">
+                                <div class="form_alert">
+                                    <mat-label class="mat_label">Payment Date<span>*</span></mat-label>
+                                    <mat-form-field class="mat_form_filed pay_amount_datepicker">
+                                        <!-- <input matInput [matDatepicker]="picker"  (dateInput)="getDate($event)" formControlName="date" -->
+                                         <input matInput [matDatepicker]="picker"  formControlName="pay_date"
+                                             class="mat_input">
+                                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                <h6>
+                                    <span *ngIf="makePaymentFrom.controls['pay_date'].hasError('required') && myform.submitted">Payment Date is required</span>
+                                  </h6>
+                              </div>
+                          </div>
+                 
+
+                           
+                        </div>
+                      
+                    </div>
+                 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row  justify-content-center">
+                                <div class="col-md-7">
+                                    <button mat-button (click)="makePayment()" class="sub_btn">Submit</button>
+                                  
+                                </div>
+                               
+                            </div>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
